@@ -1,5 +1,5 @@
 ## Diagrama de classes
-´´´mermaid
+```mermaid
 classDiagram
     class Empresa {
         +int id
