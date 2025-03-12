@@ -33,24 +33,24 @@ classDiagram
         +int id
         +Double pegada_de_carbono
         +Double uso_de_energia_renovavel
-        +String consumo_de_agua
-        +String reciclaje_residuos
+        +Double consumo_de_agua
+        +Double reciclaje_residuos
     }
 
     class Social {
         +int id
-        +String diversidade_inclusao
-        +String bem_estar_trabalhador
-        +String treinamento_e_educacao
-        +String relacao_com_comunidade
+        +Double diversidade_inclusao
+        +Double bem_estar_trabalhador
+        +Double treinamento_e_educacao
+        +Double relacao_com_comunidade
     }
 
     class Governanca {
         +int id
-        +String conselho_diverso
-        +String politicas_anticorrupcao
-        +String transparencia_relatorios
-        +String conformidade_regulatoria
+        +Double conselho_diverso
+        +Double politicas_anticorrupcao
+        +Double transparencia_relatorios
+        +Double conformidade_regulatoria
     }
 
     class HistoricoAvaliacao {
