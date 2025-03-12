@@ -31,8 +31,8 @@ classDiagram
 
     class Ambiental {
         +int id
-        +String pegada_de_carbono
-        +String uso_de_energia_renovavel
+        +Double pegada_de_carbono
+        +Double uso_de_energia_renovavel
         +String consumo_de_agua
         +String reciclaje_residuos
     }
