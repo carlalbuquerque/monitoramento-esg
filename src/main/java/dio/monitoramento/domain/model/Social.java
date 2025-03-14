@@ -7,30 +7,30 @@ public class Social {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private long id;
 
-    @Column(name = "diversidade_inclusao", nullable = false)
+    @Column(name = "diversidade_inclusao", nullable = false , precision = 5, scale = 2)
     private BigDecimal diversidadeInclusao;
 
-    @Column(name = "engajamento_comunidade", nullable = false)
+    @Column(name = "engajamento_comunidade", nullable = false, precision = 5, scale = 2)
     private BigDecimal engajamentoComunidade;
 
-    @Column(name = "satisfacao_funcionarios", nullable = false)
+    @Column(name = "satisfacao_funcionarios", nullable = false, precision = 5, scale = 2)
     private BigDecimal satisfacaoFuncionarios;
 
-    @Column(name = "direitos_trabalhistas", nullable = false)
-    private boolean direitosTrabalhistas;
+    @Column(name = "direitos_trabalhistas", nullable = false , precision = 5, scale = 2)
+    private BigDecimal direitosTrabalhistas;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "indicadores_esg_id") // A chave estrangeira
     private IndicadoresESG indicadoresESG;
 
-
     // Getters e Setters
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 
@@ -58,11 +58,11 @@ public class Social {
         this.satisfacaoFuncionarios = satisfacaoFuncionarios;
     }
 
-    public boolean isDireitosTrabalhistas() {
+    public BigDecimal isDireitosTrabalhistas() {
         return direitosTrabalhistas;
     }
 
-    public void setDireitosTrabalhistas(boolean direitosTrabalhistas) {
+    public void setDireitosTrabalhistas(BigDecimal direitosTrabalhistas) {
         this.direitosTrabalhistas = direitosTrabalhistas;
     }
     public IndicadoresESG getIndicadoresESG() {

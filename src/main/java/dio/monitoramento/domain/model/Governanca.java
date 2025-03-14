@@ -8,29 +8,33 @@ public class Governanca {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
 
-    @Column(nullable = false)
+    @Column(nullable = false , precision = 5, scale = 2)
     private BigDecimal conselhoDiverso;
 
-    @Column(nullable = false)
+    @Column(nullable = false, precision = 5, scale = 2)
     private BigDecimal politicasAnticorrupcao;
 
-    @Column(nullable = false)
+    @Column(nullable = false, precision = 5, scale = 2)
     private BigDecimal transparenciaRelatorios;
 
-    @Column(nullable = false)
+    @Column(nullable = false, precision = 5, scale = 2)
     private BigDecimal conformidadeRegulatoria;
 
-    // Construtor padrão
-    public Governanca() {}
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "indicadores_esg_id")  // A chave estrangeira
+    private IndicadoresESG indicadoresESG;
+
+
 
     // Getters e Setters
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -64,5 +68,12 @@ public class Governanca {
 
     public void setConformidadeRegulatoria(BigDecimal conformidadeRegulatoria) {
         this.conformidadeRegulatoria = conformidadeRegulatoria;
+    }
+    public IndicadoresESG getIndicadoresESG() {
+        return indicadoresESG;
+    }
+
+    public void setIndicadoresESG(IndicadoresESG indicadoresESG) {
+        this.indicadoresESG = indicadoresESG;
     }
 }

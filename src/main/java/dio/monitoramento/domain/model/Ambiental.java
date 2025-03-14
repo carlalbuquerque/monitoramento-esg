@@ -8,31 +8,31 @@ public class Ambiental {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
 
-    @Column(name = "pegada_de_carbono", nullable = false)
+    @Column(name = "pegada_de_carbono", nullable = false, precision = 5, scale = 2)
     private BigDecimal pegadaDeCarbono;
 
-    @Column(name = "uso_de_energia_renovavel", nullable = false)
+    @Column(name = "uso_de_energia_renovavel", nullable = false, precision = 5, scale = 2)
     private BigDecimal usoDeEnergiaRenovavel;
 
-    @Column(name = "consumo_de_agua", nullable = false)
+    @Column(name = "consumo_de_agua", nullable = false, precision = 5, scale = 2)
     private BigDecimal consumoDeAgua;
 
-    @Column(name = "reciclaje_residuos", nullable = false)
-    private BigDecimal reciclajeResiduos;
+    @Column(name = "reciclagem_residuos", nullable = false, precision = 5, scale = 2)
+    private BigDecimal reciclagemResiduos;
 
-    @OneToOne(cascade = CascadeType.ALL) // Relação bidirecional com IndicadoresESG
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "indicadores_esg_id") // Chave estrangeira que se relaciona com a classe IndicadoresESG
     private IndicadoresESG indicadoresESG;
 
 
-
-
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -60,18 +60,18 @@ public class Ambiental {
         this.consumoDeAgua = consumoDeAgua;
     }
 
-    public BigDecimal getReciclajeResiduos() {
-        return reciclajeResiduos;
+    public BigDecimal getReciclagemResiduos() {
+        return reciclagemResiduos;
     }
 
-    public void setReciclajeResiduos(BigDecimal reciclajeResiduos) {
-        this.reciclajeResiduos = reciclajeResiduos;
+    public void setReciclagemResiduos(BigDecimal reciclagemResiduos) {
+        this.reciclagemResiduos = reciclagemResiduos;
     }
-    public IndicadoresESG getIndicadoresESG() {
-        return indicadoresESG;
-    }
-
     public void setIndicadoresESG(IndicadoresESG indicadoresESG) {
         this.indicadoresESG = indicadoresESG;
+    }
+
+    public IndicadoresESG getIndicadoresESG() {
+        return indicadoresESG;
     }
 }

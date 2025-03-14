@@ -2,6 +2,8 @@ package dio.monitoramento.domain.model;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity(name = "tb_localizacao")
 public class Localizacao {
 
@@ -9,14 +11,17 @@ public class Localizacao {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column(nullable = false, length = 100)
+    @Column(name = "pais")
     private String pais;
 
-    @Column(nullable = false, length = 100)
+    @Column(name = "estado")
     private String estado;
 
-    @Column(nullable = false, length = 100)
+    @Column(name = "cidade")
     private String cidade;
+
+    @OneToMany(mappedBy = "localizacao", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<Empresa> empresas;
 
     // Construtor padrão
     public Localizacao() {}
@@ -52,5 +57,12 @@ public class Localizacao {
 
     public void setCidade(String cidade) {
         this.cidade = cidade;
+    }
+    public List<Empresa> getEmpresas() {
+        return empresas;
+    }
+
+    public void setEmpresas(List<Empresa> empresas) {
+        this.empresas = empresas;
     }
 }

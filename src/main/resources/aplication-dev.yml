@@ -1,16 +1,23 @@
 spring:
   datasource:
     url: jdbc:h2:mem:sdw2023
-    username: sdw2023
+    driverClassName: org.h2.Driver
+    username: sa
     password:
+
+  server:
+    port: 8080
+
   jpa:
     show-sql: true
     open-in-view: false
     hibernate:
-      ddl-auto: create # validate | update | create | create-drop
+      ddl-auto: update  # Para evitar perda de dados, altere para "update" ao invés de "create"
     properties:
       hibernate:
-        format_sql: true
+        format_sql: true  # Formatar SQL gerado
+    packages-to-scan: dio.monitoramento.domain.model  # Pacote onde suas entidades estão localizadas
+
   h2:
     console:
       enabled: true
